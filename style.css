@@ -70,6 +70,16 @@ nav div span, #active{
     left: 0;
 }
 
+.info{
+    text-align: center;
+}
+
+.info > h3{
+    color: #005;
+}
+
+
+
 .Cart{
     display: flex;
     flex-direction: column;
@@ -116,7 +126,7 @@ nav div span, #active{
     cursor: pointer!important;
     transition: all ease.3s;
     background-color: var(--main-color-2);
-    color: var(--text-Color);
+    color: #fff;
     padding: 4px 8px;
     text-align: right;
 }

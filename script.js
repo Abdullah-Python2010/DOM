@@ -1,42 +1,42 @@
-add1 = document.querySelectorAll('#add')[0];
-add2 = document.querySelectorAll('#add')[1];
-add3 = document.querySelectorAll('#add')[2];
+var add1 = document.querySelectorAll('#add')[0];
+var add2 = document.querySelectorAll('#add')[1];
+var add3 = document.querySelectorAll('#add')[2];
 
-minus1 = document.querySelectorAll('#minus')[0];
-minus2 = document.querySelectorAll('#minus')[1];
-minus3 = document.querySelectorAll('#minus')[2];
+var minus1 = document.querySelectorAll('#minus')[0];
+var minus2 = document.querySelectorAll('#minus')[1];
+var minus3 = document.querySelectorAll('#minus')[2];
 
-count1 = document.querySelectorAll('.count')[0];
-count2 = document.querySelectorAll('.count')[1];
-count3 = document.querySelectorAll('.count')[2];
+var count1 = document.querySelectorAll('.count')[0];
+var count2 = document.querySelectorAll('.count')[1];
+var count3 = document.querySelectorAll('.count')[2];
 
-price1 = document.querySelectorAll('#Price')[0];
-price2 = document.querySelectorAll('#Price')[1];
-price3 = document.querySelectorAll('#Price')[2];
+var price1 = document.querySelectorAll('#Price')[0];
+var price2 = document.querySelectorAll('#Price')[1];
+var price3 = document.querySelectorAll('#Price')[2];
 
-like1 = document.querySelectorAll('#like')[0]
-like2 = document.querySelectorAll('#like')[1]
-like3 = document.querySelectorAll('#like')[2]
+var like1 = document.querySelectorAll('#like')[0]
+var like2 = document.querySelectorAll('#like')[1]
+var like3 = document.querySelectorAll('#like')[2]
 
 
-quit1 = document.querySelectorAll('.quit')[0];
-quit2 = document.querySelectorAll('.quit')[1];
-quit3 = document.querySelectorAll('.quit')[2];
+var quit1 = document.querySelectorAll('.quit')[0];
+var quit2 = document.querySelectorAll('.quit')[1];
+var quit3 = document.querySelectorAll('.quit')[2];
 
-item1 = document.querySelectorAll('#item')[0];
-item2 = document.querySelectorAll('#item')[1];
-item3 = document.querySelectorAll('#item')[2];
+var item1 = document.querySelectorAll('#item')[0];
+var item2 = document.querySelectorAll('#item')[1];
+var item3 = document.querySelectorAll('#item')[2];
 
 quit1.addEventListener('click', function(){
-    item1.style.display = 'none'
+    item1.remove()
 })
 
 quit2.addEventListener('click', function(){
-    item2.style.display = 'none'
+    item2.remove()
 })
 
 quit3.addEventListener('click', function(){
-    item3.style.display = 'none'
+    item3.remove()
 })
 
 
@@ -73,12 +73,14 @@ like3.addEventListener('click', function(){
         like3.style.color = '#333'
     }
 })
-DP = 10;
 
-quantity1 = 1;
-quantity2 = 1;
-quantity3 = 1;
 
+var DP = 10;
+
+var quantity1 = 1;
+var quantity2 = 1;
+var quantity3 = 1;
+var Total = document.getElementById('Total')
 
 add1.addEventListener('click', function(){
     price1.innerHTML = '$'
@@ -86,6 +88,8 @@ add1.addEventListener('click', function(){
     quantity1++;
     count1.innerHTML += quantity1;
     price1.innerHTML += quantity1 * DP;
+    total_price = (quantity1 * DP) + (quantity2 * DP) + (quantity3 * DP)
+    Total.innerHTML = 'Total: $' + total_price
 });
 
 add2.addEventListener('click', function(){
@@ -94,6 +98,8 @@ add2.addEventListener('click', function(){
     quantity2++
     count2.innerHTML += quantity2;
     price2.innerHTML += quantity2 * DP
+    total_price = (quantity1 * DP) + (quantity2 * DP) + (quantity3 * DP)
+     Total.innerHTML = 'Total: $' + total_price
 });
 
 add3.addEventListener('click', function(){
@@ -102,7 +108,8 @@ add3.addEventListener('click', function(){
     quantity3++
     count3.innerHTML += quantity3;
     price3.innerHTML += quantity3 * DP
-
+    total_price = (quantity1 * DP) + (quantity2 * DP) + (quantity3 * DP)
+    Total.innerHTML = 'Total: $' + total_price
 });
 
 
@@ -115,6 +122,8 @@ minus1.addEventListener('click', function(){
         count1.innerHTML += quantity1
         price1.innerHTML += DP * quantity1;
     }
+    total_price = (quantity1 * DP) + (quantity2 * DP) + (quantity3 * DP)
+    Total.innerHTML = 'Total: $' + total_price
 });
 
 minus2.addEventListener('click', function(){
@@ -125,7 +134,10 @@ minus2.addEventListener('click', function(){
 
         count2.innerHTML += quantity2
         price2.innerHTML += DP * quantity2;
+        
     }
+    total_price = (quantity1 * DP) + (quantity2 * DP) + (quantity3 * DP)
+    Total.innerHTML = 'Total: $' + total_price
 });
 
 minus3.addEventListener('click', function(){
@@ -137,5 +149,8 @@ minus3.addEventListener('click', function(){
         count3.innerHTML += quantity3
         price3.innerHTML += DP * quantity3;
     }
+    total_price = (quantity1 * DP) + (quantity2 * DP) + (quantity3 * DP)
+    Total.innerHTML = 'Total: $' + total_price
 });
 
+var total_price = (quantity1 * DP) + (quantity2 * DP) + (quantity3 * DP);
