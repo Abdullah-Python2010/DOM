@@ -1,3 +1,5 @@
+// Initializing Variables and Functions from line 3 - 72
+
 var add1 = document.querySelectorAll('#add')[0];
 var add2 = document.querySelectorAll('#add')[1];
 var add3 = document.querySelectorAll('#add')[2];
@@ -27,16 +29,66 @@ var item1 = document.querySelectorAll('#item')[0];
 var item2 = document.querySelectorAll('#item')[1];
 var item3 = document.querySelectorAll('#item')[2];
 
+var DP = 10;
+
+var quantity1 = 1;
+var quantity2 = 1;
+var quantity3 = 1;
+var total_price = 0;
+var deleted1;
+var deleted2;
+var deleted3;
+
+var Total = document.getElementById('Total')
+
+function updatePrice(){
+    if (deleted1 != true && deleted2 != true && deleted3 != true){
+        total_price = (quantity1 * DP) + (quantity2 * DP) + (quantity3 * DP)
+
+    }else if(deleted1 === true){
+        if(deleted2 == true){
+            total_price = (quantity3 * DP)
+        }else{
+            total_price = (quantity2 * DP) + (quantity3 * DP)
+        }
+
+    }else if(deleted2 === true){
+        if(deleted1 === true){
+            total_price = (quantity3 * DP)
+        }else{
+            total_price = (quantity3 * DP) + (quantity1 * DP)
+        }
+
+    }
+    else{
+        if(deleted1 === true){
+            total_price = (quantity2 * DP)
+        }else{
+            total_price = (quantity1 * DP) + (quantity2 * DP)
+        }
+    }
+    
+    Total.innerHTML = 'Total: $' + total_price
+}
+
+//Adding Event listeners for Buttons and Actions on the Webpage
+
 quit1.addEventListener('click', function(){
     item1.remove()
+    deleted1 = true
+    updatePrice()
 })
 
 quit2.addEventListener('click', function(){
     item2.remove()
+    deleted2 = true;
+    updatePrice()
 })
 
 quit3.addEventListener('click', function(){
     item3.remove()
+    deleted3 = true;
+    updatePrice()
 })
 
 
@@ -74,22 +126,13 @@ like3.addEventListener('click', function(){
     }
 })
 
-
-var DP = 10;
-
-var quantity1 = 1;
-var quantity2 = 1;
-var quantity3 = 1;
-var Total = document.getElementById('Total')
-
 add1.addEventListener('click', function(){
     price1.innerHTML = '$'
     count1.innerHTML = 'X'
     quantity1++;
     count1.innerHTML += quantity1;
     price1.innerHTML += quantity1 * DP;
-    total_price = (quantity1 * DP) + (quantity2 * DP) + (quantity3 * DP)
-    Total.innerHTML = 'Total: $' + total_price
+    updatePrice()
 });
 
 add2.addEventListener('click', function(){
@@ -99,7 +142,8 @@ add2.addEventListener('click', function(){
     count2.innerHTML += quantity2;
     price2.innerHTML += quantity2 * DP
     total_price = (quantity1 * DP) + (quantity2 * DP) + (quantity3 * DP)
-     Total.innerHTML = 'Total: $' + total_price
+    Total.innerHTML = 'Total: $' + total_price
+    updatePrice()
 });
 
 add3.addEventListener('click', function(){
@@ -108,8 +152,7 @@ add3.addEventListener('click', function(){
     quantity3++
     count3.innerHTML += quantity3;
     price3.innerHTML += quantity3 * DP
-    total_price = (quantity1 * DP) + (quantity2 * DP) + (quantity3 * DP)
-    Total.innerHTML = 'Total: $' + total_price
+    updatePrice()
 });
 
 
@@ -122,8 +165,7 @@ minus1.addEventListener('click', function(){
         count1.innerHTML += quantity1
         price1.innerHTML += DP * quantity1;
     }
-    total_price = (quantity1 * DP) + (quantity2 * DP) + (quantity3 * DP)
-    Total.innerHTML = 'Total: $' + total_price
+    updatePrice()
 });
 
 minus2.addEventListener('click', function(){
@@ -136,8 +178,7 @@ minus2.addEventListener('click', function(){
         price2.innerHTML += DP * quantity2;
         
     }
-    total_price = (quantity1 * DP) + (quantity2 * DP) + (quantity3 * DP)
-    Total.innerHTML = 'Total: $' + total_price
+    updatePrice()
 });
 
 minus3.addEventListener('click', function(){
@@ -149,8 +190,7 @@ minus3.addEventListener('click', function(){
         count3.innerHTML += quantity3
         price3.innerHTML += DP * quantity3;
     }
-    total_price = (quantity1 * DP) + (quantity2 * DP) + (quantity3 * DP)
-    Total.innerHTML = 'Total: $' + total_price
+    updatePrice()
 });
 
 var total_price = (quantity1 * DP) + (quantity2 * DP) + (quantity3 * DP);
